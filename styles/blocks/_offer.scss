@@ -1,0 +1,76 @@
+.offer {
+    background-color: $lightest;
+  }
+  .offer_categories {
+    @include _list();
+    @include to_justify();
+    flex-wrap: wrap;
+    gap: 30px;
+    @media (max-width: 1180px) {
+      gap: 19px;
+    }
+    @media (max-width: 766px) {
+      gap: 32px;
+    }
+  }
+  .offer_items {
+    @include to_justify($content:center);
+    flex-direction: column;
+    background-color: #C4C4C4;
+    width: $wrap/3 - 20px;
+    height: 260px;
+    background-repeat: no-repeat;
+    text-align: center;
+    @media (max-width: 1180px) {
+      height: 167px;
+      width: 232px;
+      background-size: cover;
+    }
+    @media (max-width: 766px) {
+      height: 247px;
+      width: 343px;
+      background-size: cover;
+    }
+    &:nth-child(1) {
+        background-image: url("../img/offer-women.jpg");
+      }
+    &:nth-child(2) {
+        background-image: url("../img/offer-men.jpg");
+      }
+    &:nth-child(3) {
+        background-image: url("../img/offer-kids.jpg");
+      }
+    &:nth-child(4) {
+        background-image: url("../img/offer-accessories.jpg");
+        height: 180px;
+        width: 100%;
+        margin-bottom: 96px;
+        @media (max-width: 1180px) {
+          margin-bottom: 155px;
+        }
+        @media (max-width: 766px) {
+          width: 343px;
+          margin-bottom: 64px;
+        }
+      }
+    }
+
+  .offer_items:hover .offer_text {
+    transform: scale(1.5) translateY(-10px);
+  }
+  .offer_text {
+    font:
+        {weight: bold;
+        size: 24px;
+        }
+    line-height: 29px;
+    color: $lightest;
+    &::first-line {
+        font-size: 16px;
+        line-height: 19px;
+      }
+    @include basic_anim();
+  }
+  .offer_link {
+    width: 100%;
+  }

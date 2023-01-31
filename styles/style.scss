@@ -1,0 +1,319 @@
+$pink: #F16D7F;
+$dark: #222222;
+$darkest: black;
+$light: #FBFBFB;
+$lightest: white;
+$wrap: 1140px;
+$wrap_tablet: 736px;
+$wrap_phone: 360px;
+$shadow: 6px 4px 35px rgba(0, 0, 0, 0.21);
+
+@mixin _list() {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+@mixin to_justify($content:space-between) {
+    display: flex;
+    justify-content: $content;
+    align-items: center;
+}
+@mixin basic_anim ($property:all, $duration:0.3s, $delay:0.1s) {
+  transition-property: $property;
+  transition-duration: $duration;
+  transition-delay: $delay;
+}
+// Анимация - моя и с Animista
+@keyframes bigger-smaller {
+  0% {transform: scale(1);}
+  25% {transform: scale(1.1);}
+  50% {transform: scale(1.2);}
+  75% {transform: scale(1.1);}
+  100% {transform: scale(1);}
+  }
+@keyframes color-change {
+    0% {background-color: $pink;}
+    25% {background-color: #f16da4;}
+    50% {background-color: #ad2d92;}
+    75% {background-color: #f16da4;}
+    100% {background-color: $pink;}
+    }  
+@keyframes tracking-in-contract {
+    0% {
+      letter-spacing: 1em;
+      opacity: 0;
+    }
+    40% {
+      opacity: 0.6;
+    }
+    100% {
+      letter-spacing: normal;
+      opacity: 1;
+    }
+  }
+@keyframes shake-bottom {
+    0%,
+    100% {
+      transform: rotate(0deg) scale(1.2);
+      transform-origin: 50% 100%;
+    }
+    10% {
+      transform: rotate(2deg) scale(1.2);
+    }
+    20%,
+    40%,
+    60% {
+      transform: rotate(-4deg) scale(1.2);
+    }
+    30%,
+    50%,
+    70% {
+      transform: rotate(4deg) scale(1.2);
+    }
+    80% {
+      transform: rotate(-2deg) scale(1.2);
+    }
+    90% {
+      transform: rotate(2deg) scale(1.2);
+    }
+  }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  html {
+    height: 100%;
+  }
+  body {
+    font: {
+        family: 'Lato', sans-serif;
+        weight: 400;
+        size: 14px;
+    }
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  a {
+    text-decoration: none;
+  }
+  .wrapper {
+    max-width: $wrap;
+    margin: 0 auto;
+    @media (max-width: 1180px) {
+      max-width: $wrap_tablet;
+    }
+    @media (max-width: 766px) {
+      max-width: $wrap_phone;
+    }
+  }
+  
+  /* специальные повторяющиеся стили */
+  .pinktext {
+    color: $pink;
+  }
+  .hidden {
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    position: absolute;
+    left: -99999px;
+  }
+  .center {
+    @include to_justify ($content:center)
+  }
+  
+  /* стили для контента - см. импорт*/
+  .header {
+    background-color: $dark;
+  }
+  @import "blocks/menu";
+  @import "blocks/promo";
+  
+  .main {
+    flex-grow: 1;
+  }
+  @import "blocks/offer";
+  @import "blocks/products";
+  
+  .footer {
+    background-color: $dark;
+  }
+  @import "blocks/feature";
+  @import "blocks/feedback";
+  @import "blocks/copyright";
+  
+  /*стили Каталога*/
+  .inner_title {
+    background-color: #F8F3F4;
+    padding: 65px 0;
+    @media (max-width: 766px) {
+      padding-top: 24px;
+      padding-bottom: 46px;
+    }
+  }
+  .inner_title_container {
+    @include to_justify();
+    @media (max-width: 766px) {
+      flex-direction: column;
+    }
+  }
+  .inner_title_heading {
+    font-size: 24px;
+    line-height: 29px;
+    animation: tracking-in-contract 1s;
+    @media (max-width: 766px) {
+      padding-bottom: 32px;
+    }
+  }
+  @import "blocks/bread";
+  @import "blocks/filters";
+  .pagination {
+    @include _list();
+    display: flex;
+    gap: 23px;
+    margin-bottom: 32px;
+    @media (max-width:1180px) {
+      margin-bottom: 0px;
+    }
+    }
+  .page-item:nth-child(8) {
+      margin: 0 -23px;
+  }
+  .page-link {
+    text-decoration: none;
+    font: {
+        weight: 300;
+        size: 16px;
+        }
+    line-height: 19px;
+    color: #C4C4C4;
+    display: inline-block;
+    &:hover {
+      transform: scale(1.5);
+      color: $dark;
+    }
+    }
+  .active {
+    color: #EF5B70;  
+  }
+  
+/*стили Страницы Продукта*/
+@import "blocks/productpage";
+
+/*стили Корзины*/
+@import "blocks/cart";
+
+/*стили Регистрации*/
+.registration {
+  @include to_justify();
+  align-items: flex-start;
+  padding-top: 64px;
+  padding-bottom: 96px;
+  @media (max-width: 1180px) {
+    padding-top: 40px;
+  }
+  @media (max-width: 766px) {
+     flex-direction: column;
+  }
+}
+.registration_form {
+    display: flex;
+    flex-direction: column;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 16px;
+    color:#B1B1B1;
+    gap: 21px;
+    &_heading {
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 19px;
+      color: $dark;
+    }
+    &_field {
+      font-family: inherit;
+      color:inherit;
+      background-color: $lightest;
+      border: 1px solid #A4A4A4;
+      padding: 17px;
+      width: 360px;
+      &::placeholder {
+              color: $dark;
+              font-family: inherit;
+          }
+    }
+}
+.registration_text {
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 16px;
+  color: #B1B1B1;
+  padding-bottom: 20px;
+}
+.registration_gender {
+  @include to_justify($content:flex-start);
+  gap: 20px;
+  font-weight: 300;
+  font-size: 11px;
+  line-height: 13px;
+  color: $darkest;
+  &_text {
+    padding-left: 10px;
+  }
+}
+.registration_button {
+  padding: 16px 29px;
+  align-self: flex-start;
+  &_text {
+  font-size: 14px;
+  line-height: 17px;
+  padding-right: 20px;
+  }
+  &_svg {
+    fill: $lightest;
+  }
+  &:hover &_svg {
+    fill: $pink;
+  }
+}
+.registration_benefit {
+  padding-left: 128px;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 29px;
+  @media (max-width: 1180px) {
+    font-size: 16px;
+    line-height: 19px;
+    padding-left: 22px;    
+  }
+  @media (max-width: 766px) {
+    padding-top: 40px;
+    padding-left: 0px;
+  }
+  &_heading {
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 29px;
+    padding-bottom: 22px;
+  @media (max-width: 1180px) {
+    font-size: 16px;
+    line-height: 19px;
+    }
+  }
+  &_text {
+    padding-bottom: 22px;
+  }
+  &_list {
+    @include _list();
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    list-style-image: url("../img/Check.svg");
+    list-style-position: inside;
+  }
+  &_item:before {
+    padding-left: 22px;
+  }
+}

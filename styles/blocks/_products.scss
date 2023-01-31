@@ -1,0 +1,138 @@
+
+  .products {
+    background-color: $lightest;
+  }
+  .products_container {
+    margin-bottom: 110px;
+    @media (max-width:1180px) {
+      margin-bottom: 64px;
+    }
+    @media (max-width: 766px) {
+      margin-bottom: 96px;
+    }
+  }
+  .product_featured_heading {
+    font-size: 30px;
+    line-height: 36px;
+    color:$dark;
+    text-align: center;
+    margin-bottom: 6px;
+  }
+  .product_featured_text {
+    font: {
+        weight: 300;
+        size: 14px;
+        }
+    line-height: 17px;
+    color: #9F9F9F;
+    text-align: center;
+    margin-bottom: 48px;
+    @media (max-width:1180px) {
+      margin-bottom: 72px;
+    }
+    @media (max-width: 766px) {
+      margin-bottom: 64px;
+    }
+  }
+  .product_list {
+    @include _list();
+    @include to_justify();
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 45px;
+    @media (max-width:1180px) {
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    @media (max-width: 766px) {
+      margin-bottom: 40px;
+    }
+  }
+  .product_card {
+    width: $wrap/3 - 20px;
+    background-color:#F8F8F8;
+    &:hover .product_overlay {
+      transform: scale(1);
+  }
+}
+  .product_video {
+    object-fit: cover;
+  }
+  .product_info {
+    padding: 20px;
+  }
+  .product_heading {
+    font-size: 13px;
+    line-height: 16px;
+    color: $darkest;
+    font-weight: bold;
+    @include basic_anim;
+    &:hover {
+      color: $pink;
+    }
+  }
+  .product_text {
+    font: {
+        weight: 300;
+        size: 14px;
+        }
+    line-height: 17px;
+    color: #5D5D5D;
+    padding: 20px 0;
+  }
+  .product_price {
+    font-size: 16px;
+    line-height: 19px;
+  }
+  .product_button {
+    font-size: 16px;
+    line-height: 19px;
+    text-decoration: none;
+    padding: 15px 40px;
+    border: 1px solid $pink;
+    transition-property: background-color, color;
+    transition-delay: 0.2s;
+    transition-duration: 0.3s;
+    &:hover {
+        background-color: $pink;
+        color: $lightest;
+        animation: shake-bottom 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both infinite;
+      }
+  }
+  
+  .product_overlay {
+    position:absolute;
+    background-color: rgba(58, 56, 56, 0.86);
+    width: inherit;
+    height: 420px;
+    @include to_justify($content:center);
+    @include basic_anim($duration:1s);
+    transition-timing-function: cubic-bezier(0.1, 0.78, 0.57, 1);
+    transform: scaleX(0);
+    transform-origin: top left;
+    }
+
+  .product_overlay_btn {
+    font-family: Lato;
+    font-size: 14px;
+    line-height: 17px;
+    background-color: transparent;
+    color: $lightest;
+    padding: 9px 14px;
+    border: 1px solid $lightest;
+    @include basic_anim($duration:0.7s, $delay:0.1s);
+    &:hover {
+      color: $pink;
+      border: 1px solid $pink;
+      .product_overlay_btn_img {
+        fill: $pink;
+      }
+    }
+  }
+
+.product_overlay_btn_img {
+    vertical-align: middle;
+    margin-right: 10px;
+    fill: $lightest;
+    @include basic_anim($duration:0.7s, $delay:0.1s);
+  }

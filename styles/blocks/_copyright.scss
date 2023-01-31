@@ -1,0 +1,35 @@
+.copyright_content {
+    padding-top: 24px;
+    padding-bottom: 24px;
+    @include to_justify();
+    @media (max-width: 766px) {
+      flex-direction: column-reverse;
+      gap: 40px;
+      padding-top: 43px;
+      padding-bottom: 9px;
+    }
+   }
+   .copyright_text {
+     font-size: 16px;
+     line-height: 19px;
+     color: $light;
+   }
+   .social {
+     display: flex;
+     gap: 8px;
+   }
+   .social_icons {
+     @include to_justify($content:center);
+     gap: 8px;
+     width: 32px;
+     height: 32px;
+     background-color: $lightest;
+     color: $darkest;
+     text-decoration: none;
+     @include basic_anim ();
+     &:hover {
+         background-color: $pink;
+         color: $lightest;
+         transform: rotate(360deg) scale(1.2);
+         }
+   }

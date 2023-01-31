@@ -1,0 +1,70 @@
+.promo {
+    background-color: #F1E4E6
+  }
+  .promo_content {
+    height: 760px;
+    @include to_justify($content:flex-end);
+    margin-bottom: 65px;
+    background-image: url("../img/promo.png");
+    background-repeat: no-repeat;
+    @media (max-width: 1180px) {
+      height: 367px;
+      background-size: contain;
+      background-position: 96px;
+      margin-bottom: 27px;
+    }
+    @media (max-width: 766px) {
+      background-image: none;
+      height: 363px;
+      margin-bottom: 65px;
+    }
+  }
+
+  /* .promo_video {
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    z-index: 0;
+  } */
+  .promo_headings {
+    font: {
+        weight: bold;
+        size: 32px;
+    }
+    color: $dark;
+    line-height: 38px;
+    border-left: 12px solid $pink;
+    margin-bottom: 10px;
+    padding-left: 16px;
+    z-index: 1;
+    @media (max-width: 1180px) {
+      font-size: 24px;
+      line-height: 29px;
+      margin-left: $wrap_tablet*56/100;
+    }
+    @media (max-width: 766px) {
+      font-size: 20px;
+      line-height: 24px;
+      margin: 0px 44px;
+      text-align: center;
+    }
+    &::first-line {
+        font: {
+            weight: 900;
+            size: 48px;
+        }
+        line-height: 58px;
+        @media (max-width: 1180px) {
+          font-size: 44px;
+          line-height: 53px;  
+        }
+        @media (max-width: 766px) {
+          font-size: 38px;
+          line-height: 46px;
+      }
+    }
+  }
+
+  .tracking-in-contract {
+    animation: tracking-in-contract 2s cubic-bezier(0.215, 0.610, 0.355, 1.000) ;
+  }

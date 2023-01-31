@@ -1,0 +1,30 @@
+.bread_list {
+    @include _list();
+    @include to_justify();
+    gap: 16px;
+  }
+  .bread_item::before {
+    content: '/';
+    margin-right: 10px;
+  }
+  .bread_item:first-child::before {
+    display: none;
+  }
+  .bread_link {
+    text-decoration: none;
+    font: {
+        weight: 300;
+        size: 14px;
+        }
+    line-height: 17px;
+    color: #636363;
+    @include basic_anim();
+    &:hover {
+        text-decoration: underline;
+        color: $pink;
+      }
+    &_current {
+        font-weight: bold;
+        color: $pink;
+    }
+  }
